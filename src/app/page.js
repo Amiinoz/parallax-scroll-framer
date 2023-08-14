@@ -1,48 +1,65 @@
+"use client";
 import styles from "./page.module.css";
 import Image from "next/image";
+import { useTransform, useScroll, motion } from "framer-motion";
+import { useRef } from "react";
 
 const images = [
-	"/images/1.jpg",
-	"/images/2.jpg",
-	"/images/3.jpg",
-	"/images/4.jpg",
-	"/images/5.jpg",
-	"/images/6.jpg",
-	"/images/7.jpg",
-	"/images/8.jpg",
-	"/images/9.jpg",
-	"/images/10.jpg",
-	"/images/11.jpg",
-	"/images/12.jpg",
+	"1.jpg",
+	"2.jpg",
+	"3.jpg",
+	"4.jpg",
+	"5.jpg",
+	"6.jpg",
+	"7.jpg",
+	"8.jpg",
+	"9.jpg",
+	"10.jpg",
+	"11.jpg",
+	"12.jpg",
 ];
 
 export default function Home() {
+	const container = useRef(null);
+	const { scrollYProgress } = useScroll({
+		target: container,
+		offset: ["start end", "end start"],
+	});
+
+	const y = useTransform(scrollYProgress, [0, 1], [0, 1000]);
+
 	return (
 		<main className={styles.main}>
-			<div className="styles.gallery">
-				<Column images={[images[0], images[1], images[2]]} />
+			<div className={styles.spacer}></div>
+			<div ref={container} className={styles.gallery}>
+				<Column images={[images[0], images[1], images[2]]} y={y} />
 				<Column images={[images[3], images[4], images[5]]} />
 				<Column images={[images[6], images[7], images[8]]} />
 				<Column images={[images[9], images[10], images[11]]} />
 			</div>
+			<div className={styles.spacer}></div>
 		</main>
 	);
 }
 
-const Column = ({ images }) => {
+const Column = ({ images, y }) => {
 	return (
-		<div className="styles.column">
-			{images.map((image, index) => {
+		<motion.div style={{ y }} className={styles.column}>
+			{images.map((src, index) => {
 				return (
-					<Image
-						key={index}
-						src={image}
-						alt="Image"
-						width={300}
-						height={300}
-					/>
+					<div key={index} className={styles.imageContainer}>
+						<Image
+							key={index}
+							src={`/images/${src}`}
+							fill
+							alt="Image"
+							// width={300}
+							// height={300}
+							className="content-img"
+						/>
+					</div>
 				);
 			})}
-		</div>
+		</motion.div>
 	);
 };

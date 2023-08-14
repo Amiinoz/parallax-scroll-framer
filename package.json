@@ -11,13 +11,13 @@
   "dependencies": {
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.13",
+    "framer-motion": "10.15.2",
     "next": "13.4.13",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
   "main": "next.config.js",
-  "devDependencies": {},
   "keywords": [],
   "author": "Mohamed Magan <momagan@gmail.com> (https://momagan.com/)",
   "license": "MIT"
