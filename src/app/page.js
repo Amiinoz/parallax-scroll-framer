@@ -2,7 +2,8 @@
 import styles from "./page.module.css";
 import Image from "next/image";
 import { useTransform, useScroll, motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
 
 const images = [
 	"1.jpg",
@@ -53,8 +54,6 @@ const Column = ({ images, y }) => {
 							src={`/images/${src}`}
 							fill
 							alt="Image"
-							// width={300}
-							// height={300}
 							className="content-img"
 						/>
 					</div>

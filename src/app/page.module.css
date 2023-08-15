@@ -26,6 +26,18 @@
 		.content-img {
 			object-fit: cover;
 		}
+		.content-img &:nth-of-type(1) {
+			top: -45%;
+		}
+		.content-img &:nth-of-type(2) {
+			top: -95%;
+		}
+		.content-img &:nth-of-type(3) {
+			top: -45%;
+		}
+		.content-img &:nth-of-type(4) {
+			top: -75%;
+		}
 	}
 }
 
